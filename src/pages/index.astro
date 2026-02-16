@@ -1,0 +1,64 @@
+---
+import Link from '@/components/Link.astro'
+import PageHead from '@/components/PageHead.astro'
+import { SITE } from '@/consts'
+import Layout from '@/layouts/Layout.astro'
+import { getRecentPosts } from '@/lib/data-utils'
+
+const posts = await getRecentPosts(SITE.featuredPostCount)
+---
+
+<Layout class="max-w-xl">
+  <PageHead slot="head" title="Home" />
+  <section>
+    <div class="flex items-center gap-2">
+      <h1 hidden>Fonsi Hernández</h1>
+      <p class="text-3xl font-medium tracking-tight">fonsi</p>
+      <img
+        src="/static/avatar.gif"
+        alt="Fonsi Hernández"
+        class="size-9 rounded-xl object-cover"
+      />
+      <p class="text-3xl font-medium tracking-tight">hernández</p>
+    </div>
+    <p class="text-muted-foreground mt-1 text-xs">/ˈfon.si/ — FOHN-see</p>
+    <p class="text-muted-foreground mt-3">
+      Turning coffee into distributed systems — Software engineer (+9 years),
+      aspiring founder, into gym and photography — based in San Francisco.
+    </p>
+  </section>
+  <section class="mt-10">
+    <h2 class="text-lg font-medium">Latest posts</h2>
+    <ul class="mt-4 flex flex-col">
+      {
+        posts.map((post) => (
+          <li>
+            <Link
+              href={`/blog/${post.id}`}
+              class="group flex items-baseline justify-between gap-4 py-3"
+            >
+              <span class="text-foreground group-hover:text-foreground/80 font-medium transition-colors">
+                {post.data.title}
+              </span>
+              <span class="text-muted-foreground shrink-0 tabular-nums text-sm">
+                {post.data.date.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })}
+              </span>
+            </Link>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="mt-4">
+      <Link
+        href="/blog"
+        class="text-muted-foreground hover:text-foreground text-sm transition-colors"
+      >
+        All posts &rarr;
+      </Link>
+    </div>
+  </section>
+</Layout>

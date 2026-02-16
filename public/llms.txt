@@ -1,0 +1,25 @@
+# Fonsi Hernández
+
+> Turning coffee into distributed systems. Software engineer (+9 years), aspiring founder, into gym and photography — based in San Francisco.
+
+## Links
+
+- Website: https://fonsi.sh
+- Blog: https://fonsi.sh/blog
+- GitHub: https://github.com/aheruz
+- X: https://x.com/fonsiheruz
+- LinkedIn: https://linkedin.com/in/alfonsohernandezu
+- Instagram: https://instagram.com/fonsiheruz
+
+## Work Experience
+
+- Tesedi — Lead Software Engineer (2024–Present)
+- ESW — Lead Software Engineer (2022–2024)
+- Agency Velocity — Software Advisor (2022–2023)
+- Scalefast — Software Engineer (2019–2021)
+- Nateevo — Fullstack Engineer (2018–2019)
+- Novavision — Fullstack Engineer (2017–2018)
+
+## Blog Posts
+
+- Using Conventional Commits in GitHub Actions: https://fonsi.sh/blog/conventional-commits-github-actions

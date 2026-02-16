@@ -1,0 +1,85 @@
+---
+title: 'Using Conventional Commits in GitHub Actions'
+description: 'Enforce Conventional Commits in your GitHub workflow to ensure a clear and structured commit history.'
+date: 2024-05-27
+tags: ['git', 'github-actions', 'ci']
+authors: ['alfonso']
+---
+
+Maintaining a clear commit history is crucial in software projects. Conventional Commits provide a structured way to format commit messages, which can be enforced using GitHub Actions.
+
+## Setting Up the GitHub Action
+
+Create a workflow file at `.github/workflows/conventional-commits.yml`:
+
+```yaml
+name: Conventional Commits
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  conventional-commits:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ytanikin/PRConventionalCommits@1.1.0
+        with:
+          task_types: '["feat","fix","docs","refactor","test","ci","chore","revert","release","merge","hotfix"]'
+```
+
+This action validates pull request titles against the Conventional Commits standard, triggering on pull request events.
+
+## Conventional Commit Format
+
+Messages follow this pattern:
+
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+## Common Types
+
+| Type | Description |
+|------|-------------|
+| `feat` | A new feature |
+| `fix` | A bug fix |
+| `docs` | Documentation changes |
+| `refactor` | Code refactoring |
+| `test` | Adding or updating tests |
+| `ci` | CI/CD changes |
+| `chore` | Maintenance tasks |
+| `revert` | Reverting a previous commit |
+| `release` | Release-related changes |
+| `merge` | Merge commits |
+| `hotfix` | Critical bug fixes |
+
+## Examples
+
+```
+feat: add user login feature
+fix: resolve issue with user logout
+docs: update README with setup instructions
+ci: add conventional commits workflow
+refactor: extract auth logic into service
+```
+
+## Benefits
+
+1. **Automated changelogs** — Generate changelogs automatically from commit history
+2. **Semantic versioning** — Automate version bumps based on commit types
+3. **Clearer communication** — Standardized messages make the history readable for the entire team
+
+## Conclusion
+
+By integrating Conventional Commits into your GitHub workflow, you ensure a maintainable and understandable commit history. The automation catches non-conforming titles early, keeping your project's git log clean and useful.

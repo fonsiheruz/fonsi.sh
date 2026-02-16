@@ -1,0 +1,192 @@
+---
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import Link from '@/components/Link.astro'
+import PageHead from '@/components/PageHead.astro'
+import { Separator } from '@/components/ui/separator'
+import Layout from '@/layouts/Layout.astro'
+
+const work = [
+  {
+    period: '2024 — Present',
+    role: 'Lead Software Engineer',
+    company: 'Tesedi',
+    description:
+      'Leading a team and building a B2B SaaS company based in Switzerland.',
+  },
+  {
+    period: '2022 — 2024',
+    role: 'Lead Software Engineer',
+    company: 'ESW',
+    description:
+      'Led cross-functional teams building e-commerce platforms for luxury brands like Gucci and Balenciaga.',
+  },
+  {
+    period: '2022 — 2023',
+    role: 'Software Advisor',
+    company: 'Agency Velocity',
+    description:
+      'Consulted on architecture and engineering best practices for agency clients.',
+  },
+  {
+    period: '2019 — 2021',
+    role: 'Software Engineer',
+    company: 'Scalefast',
+    description:
+      'Built scalable e-commerce solutions for global brands.',
+  },
+  {
+    period: '2018 — 2019',
+    role: 'Fullstack Engineer',
+    company: 'Nateevo',
+    description:
+      'Developed digital products for enterprise clients including Movistar and Mapfre.',
+  },
+  {
+    period: '2017 — 2018',
+    role: 'Fullstack Engineer',
+    company: 'Novavision',
+    description:
+      'Built web applications and interactive experiences for various clients.',
+  },
+]
+---
+
+<Layout class="max-w-3xl">
+  <PageHead slot="head" title="About" />
+  <Breadcrumbs items={[{ label: 'About', icon: 'lucide:info' }]} />
+
+  <!-- Intro -->
+  <section>
+    <div class="prose">
+      <p class="mt-0">
+        I'm Fonsi. Turning coffee into distributed systems.
+      </p>
+      <p>
+        I discovered my passion for coding during my first semester of Software
+        Engineering back in Venezuela. I love how absorbed I become when building
+        and prototyping. I began building websites at 11, and at 18, friends from
+        church hired me as the first developer for their Panamanian startup. I
+        left my café job and have been dedicated to software ever since.
+      </p>
+      <p>
+        Over +9 years I've shipped products for brands like <strong
+          >Gucci</strong
+        >, <strong>Balenciaga</strong>, <strong>Movistar</strong>, and <strong
+          >Mapfre</strong
+        >. Last year I pursued an AI startup during nights and weekends with a Y
+        Combinator match — one of my favorite experiences. That magical moment
+        when everything clicks and your vision starts to come alive.
+      </p>
+      <p>
+        Today I'm leading a team building a B2B SaaS in Switzerland. Into gym
+        and photography, based in San Francisco.
+      </p>
+    </div>
+  </section>
+
+  <Separator className="my-8" />
+
+  <!-- Work -->
+  <section>
+    <h2 class="text-2xl font-medium mb-6">Work</h2>
+    <div class="flex flex-col gap-6">
+      {
+        work.map((job) => (
+          <div class="grid grid-cols-1 gap-1 sm:grid-cols-[180px_1fr] sm:gap-4">
+            <span class="text-muted-foreground text-sm tabular-nums">
+              {job.period}
+            </span>
+            <div>
+              <p class="font-medium">
+                {job.role}{' '}
+                <span class="text-muted-foreground font-normal">
+                  at {job.company}
+                </span>
+              </p>
+              <p class="text-muted-foreground text-sm mt-1">
+                {job.description}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <Separator className="my-8" />
+
+  <!-- Photos -->
+  <section>
+    <h2 class="text-2xl font-medium mb-6">Photos</h2>
+    <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+      <img
+        src="/static/about/photo-1.jpg"
+        alt="Photo 1"
+        class="aspect-[4/5] rounded-lg object-cover"
+      />
+      <img
+        src="/static/about/photo-2.jpg"
+        alt="Photo 2"
+        class="aspect-[4/5] rounded-lg object-cover"
+      />
+      <img
+        src="/static/about/photo-3.jpg"
+        alt="Photo 3"
+        class="aspect-[4/5] rounded-lg object-cover"
+      />
+      <img
+        src="/static/about/photo-4.jpg"
+        alt="Photo 4"
+        class="aspect-[4/5] rounded-lg object-cover"
+      />
+      <img
+        src="/static/about/photo-5.jpg"
+        alt="Photo 5"
+        class="aspect-[4/5] rounded-lg object-cover"
+      />
+    </div>
+  </section>
+
+  <Separator className="my-8" />
+
+  <!-- Uses / Gear -->
+  <section>
+    <h2 class="text-2xl font-medium mb-6">Uses</h2>
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+      <div>
+        <h3 class="font-medium mb-3">Dev Tools</h3>
+        <ul class="text-muted-foreground text-sm space-y-2">
+          <li>Editor: VS Code / Neovim</li>
+          <li>Terminal: Ghostty</li>
+          <li>Browser: Arc</li>
+          <li>Font: Geist Mono</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-medium mb-3">Hardware</h3>
+        <ul class="text-muted-foreground text-sm space-y-2">
+          <li>MacBook Pro 16"</li>
+          <li>Apple Studio Display</li>
+          <li>Apple Magic Keyboard</li>
+          <li>Apple Magic Trackpad</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <Separator className="my-8" />
+
+  <!-- CV Download -->
+  <section class="flex flex-col items-start">
+    <h2 class="text-2xl font-medium mb-4">Resume</h2>
+    <p class="text-muted-foreground text-sm mb-4">
+      Download my full CV for the detailed version.
+    </p>
+    <Link
+      href="/static/swe-alfonso-hernandez-cv.pdf"
+      class="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
+    >
+      Download CV &darr;
+    </Link>
+  </section>
+</Layout>
